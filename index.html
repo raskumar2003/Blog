@@ -1,0 +1,162 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DoBlog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Space Grotesk', sans-serif; }
+    .fade-img { opacity: 0; transition: opacity 0.4s ease-in; }
+    .fade-img.loaded { opacity: 1; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 transition-colors">
+  <!-- Header with responsive menu -->
+  <header class="bg-white shadow sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto flex justify-between items-center px-4 py-3">
+      <a href="#" class="text-2xl font-bold text-gray-900">GoBlog</a>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#" class="hover:text-blue-600 text-gray-700">Home</a>
+        <a href="#" class="hover:text-blue-600 text-gray-700">Topics</a>
+        <a href="#" class="hover:text-blue-600 text-gray-700">About</a>
+        <a href="#" class="hover:text-blue-600 text-gray-700">Contact</a>
+      </nav>
+      <button class="md:hidden block text-gray-700" onclick="document.getElementById('mobileMenu').classList.toggle('hidden')">☰</button>
+    </div>
+    <div id="mobileMenu" class="md:hidden hidden px-4 pb-4 space-y-2">
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Home</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Topics</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">About</a>
+      <a href="#" class="block text-gray-700 hover:text-blue-600">Contact</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="text-center max-w-3xl mx-auto px-4 mt-12 mb-10">
+    <h1 class="text-4xl md:text-5xl font-bold mb-4">Explore Our Latest Insights</h1>
+    <p class="text-gray-600">Stay ahead with curated articles on web trends, UI design, and development techniques.</p>
+  </section>
+
+  <!-- Add Blog/Post Blog Box -->
+  <section class="max-w-3xl mx-auto bg-blue-500 text-white rounded-xl p-8 mb-10 text-center">
+    <h2 class="text-2xl font-bold mb-2">Add Blog / Post Blog</h2>
+    <p>Share your insights and publish your articles directly!</p>
+    <button id="postNowBtn" class="mt-4 bg-white text-blue-600 px-6 py-2 rounded font-semibold hover:bg-gray-100">Post Now</button>
+  </section>
+
+  <!-- Articles Grid -->
+  <section id="blogGrid" class="max-w-6xl mx-auto grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-4">
+    <article class="bg-white rounded-xl shadow overflow-hidden">
+      <img loading="lazy" src="modern.jpg" alt="Article" class="w-full">
+      <div class="p-5">
+        <p class="text-sm text-gray-500 mb-1">15 July 2025 · 6 min read</p>
+        <h2 class="text-xl font-semibold mb-2">Building Modern Interfaces</h2>
+        <p class="text-gray-600 mb-4">Discover techniques to design interactive, accessible interfaces efficiently.</p>
+        <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Read More</a>
+      </div>
+    </article>
+    <article class="bg-white rounded-xl shadow overflow-hidden">
+      <img loading="lazy" src="web.jpg" alt="Article" class="w-full">
+      <div class="p-5">
+        <p class="text-sm text-gray-500 mb-1">10 July 2025 · 8 min read</p>
+        <h2 class="text-xl font-semibold mb-2">Optimizing Web Performance</h2>
+        <p class="text-gray-600 mb-4">Tips and tricks to make your websites blazing fast and efficient.</p>
+        <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Read More</a>
+      </div>
+    </article>
+    <article class="bg-white rounded-xl shadow overflow-hidden">
+      <img loading="lazy" src="css.jpg" alt="Article" class="w-full">
+      <div class="p-5">
+        <p class="text-sm text-gray-500 mb-1">05 July 2025 · 5 min read</p>
+        <h2 class="text-xl font-semibold mb-2">Mastering CSS Utility Classes</h2>
+        <p class="text-gray-600 mb-4">Learn how to build layouts faster with a utility‑first approach.</p>
+        <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Read More</a>
+      </div>
+    </article>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="max-w-3xl mx-auto bg-gradient-to-r from-blue-600 to-indigo-500 text-white mt-16 mb-12 rounded-xl p-8 text-center">
+    <h2 class="text-2xl font-bold mb-2">Join Our Newsletter</h2>
+    <p class="mb-5">Get notified when we publish something new!</p>
+    <form class="flex flex-col sm:flex-row gap-4 justify-center">
+      <input type="email" placeholder="Your email" class="flex-1 px-4 py-3 rounded text-gray-800" required>
+      <button type="submit" class="bg-white text-blue-600 px-6 py-3 rounded font-semibold hover:bg-gray-100">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- Comment Box -->
+  <section class="max-w-3xl mx-auto mb-16 px-4">
+    <h3 class="text-xl font-semibold mb-2 text-gray-800">Leave a Comment</h3>
+    <textarea id="commentText" rows="4" placeholder="Write your comment here..." class="w-full p-4 border border-gray-300 rounded mb-4 text-gray-800"></textarea>
+    <button id="submitComment" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded">Submit</button>
+  <div id="commentList" class="mt-6 space-y-4"></div>
+</section>
+
+  <!-- Footer -->
+  <footer class="bg-white text-gray-700 py-6 text-center">
+    <p>© 2025 GoBlog</p>
+  </footer>
+
+  
+  <script>
+    // Newsletter subscription alert
+    document.querySelector("form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("You will be notified when we publish somthing new.");
+      this.reset();
+    });
+
+    // Blog post section logic
+    const postNowBtn = document.getElementById("postNowBtn");
+    const blogSection = document.getElementById("blogGrid");
+
+    postNowBtn.addEventListener("click", function () {
+      if (!document.getElementById("blogInputBox")) {
+        const inputBox = document.createElement("div");
+        inputBox.id = "blogInputBox";
+        inputBox.className = "max-w-3xl mx-auto bg-white border p-6 mt-4 rounded shadow";
+        inputBox.innerHTML = `
+          <textarea id="blogText" placeholder="Write your blog..." rows="4" class="w-full p-3 border rounded mb-4 text-gray-800"></textarea>
+          <button id="submitBlog" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Submit Blog</button>
+        `;
+        this.parentNode.appendChild(inputBox);
+
+        document.getElementById("submitBlog").addEventListener("click", function () {
+          const content = document.getElementById("blogText").value.trim();
+          if (content) {
+            const article = document.createElement("article");
+            article.className = "bg-white rounded-xl shadow overflow-hidden";
+            article.innerHTML = `
+              <img loading="lazy" src="https://via.placeholder.com/600x300" alt="New Blog" class="w-full">
+              <div class="p-5">
+                <p class="text-sm text-gray-500 mb-1">15 July 2025 · 3 min read</p>
+                <h2 class="text-xl font-semibold mb-2">User Blog</h2>
+                <p class="text-gray-600 mb-4">${content}</p>
+                <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">Read More</a>
+              </div>`;
+            blogSection.appendChild(article);
+            inputBox.remove();
+          }
+        });
+      }
+    });
+  
+    // Comment submission
+    document.getElementById("submitComment").addEventListener("click", function () {
+      const comment = document.getElementById("commentText").value.trim();
+      if (comment) {
+        const p = document.createElement("p");
+        p.className = "bg-gray-100 p-3 rounded border";
+        p.textContent = comment;
+        document.getElementById("commentList").appendChild(p);
+        document.getElementById("commentText").value = "";
+      }
+    });
+  </script>
+</body>
+
